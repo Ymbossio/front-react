@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Container for the cards */
+  .container {
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  img{
+    width: 100px;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Card Grid */
+  .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  /* Card styles */
+  .card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 300px; /* Max width for each card */
+    transition: transform 0.2s;
+  }
+
+  button{
+    background-color: rgb(186, 186, 255);
+    width: 40%;
+    height: 70%;
+  }
+
+  button:hover{
+    background-color: aqua;
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Add hover effect */
+  }
+  
+  .card-content h2 {
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+  }
+  
+  .card-content p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Responsive Design */
+  
+  /* For small screens like iPhone SE */
+  @media (max-width: 750px) {
+    .card-grid {
+      flex-direction: column; /* Stacks the cards vertically on smaller screens */
+    }
+  }
+  
+  /* For larger screens */
+  @media (min-width: 751px) {
+    .card-grid {
+      justify-content: space-between;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .card-grid {
+      flex-wrap: wrap;
+    }
+  }
+  
+  .total-container {
+    display: flex;
+    justify-content: space-between; /* Alinea el contenido a los extremos del contenedor */
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-bottom: 20px;
+  }
+  
+  .total-amount {
+    font-size: 1.2em;
+    /* Puedes ajustar más estilos según sea necesario */
+  }
+  
+  .wompi-button-container {
+    /* Asegúrate de que el contenedor tenga un ancho adecuado si es necesario */
+    width: auto;
+  }
+  
