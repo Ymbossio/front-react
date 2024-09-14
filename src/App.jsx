@@ -5,6 +5,8 @@ import './App.css';
 function App() {
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
+  const [reference, setReference] = useState('');
+
 
   useEffect(() => {
     fetch('http://localhost:8080/productos')
@@ -13,15 +15,20 @@ function App() {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
-  const handleBuyClick = (precio) => {
+  const handleBuyClick = (precio, id, title) => {
     setTotal(prevTotal => prevTotal + precio);
+    var newtitle = title.replace(/\s+/g, '');
+    setReference(`${id}${precio}${newtitle}${new Date().toISOString()}`);
   };
 
   const public_key = import.meta.env.VITE_PUBLIC_KEY;
   const currency = import.meta.env.VITE_CURRENCY;
-  const reference = import.meta.env.VITE_REFERENCE;
+  const ref = reference.replace(/[:]/g, '-').replace(/T/, '_', /\s+/g, '');
   const redirect = import.meta.env.VITE_REDIRECT; 
   const integration = import.meta.env.VITE_INTEGRATION;
+
+  console.log(ref, "new reference");
+  
 
   const loadWompiScript = async () => {
     const existingScript = document.getElementById('wompi-script');
@@ -32,19 +39,8 @@ function App() {
     // Convertir total a centavos y añadir dos ceros al final
     const totalInCents = (total * 100).toString()+"0";
 
-    console.log("nuevo total en centavos con ceros añadidos", totalInCents);
-
-    console.log(public_key, "key public");
-    console.log(currency, "currency");
-    console.log(reference, "reference");
-    console.log(redirect, "redirect");
-    console.log(integration, "integration");
-    
-        
-
     // Secreto de integridad
-    const secretIntegrity = `${reference}${totalInCents}${currency}${integration}`;
-    console.log(secretIntegrity, "secreto");
+    const secretIntegrity = `${ref}${totalInCents}${currency}${integration}`;
     
     const encodedText = new TextEncoder().encode(secretIntegrity);
     const hashBuffer = await crypto.subtle.digest("SHA-256", encodedText);
@@ -99,7 +95,7 @@ function App() {
                   <p>{producto.descripcion}</p>
                   <span>${producto.precio}00</span>
                   <br />
-                  <button onClick={() => handleBuyClick(producto.precio)}>Añadir</button>
+                  <button onClick={() => handleBuyClick(producto.precio, producto.id, producto.title)}>Añadir</button>
                 </div>
               </div>
             </React.Fragment>
