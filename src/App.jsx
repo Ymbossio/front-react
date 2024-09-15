@@ -8,8 +8,9 @@ function App() {
   const [reference, setReference] = useState('');
 
 
+  const api = import.meta.env.VITE_API;
   useEffect(() => {
-    fetch('http://localhost:8080/productos')
+    fetch(api)
       .then(response => response.json())
       .then(productos => setData(productos))
       .catch(error => console.error('Error fetching data:', error));
