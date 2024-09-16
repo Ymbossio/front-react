@@ -6,14 +6,23 @@ function App() {
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
   const [reference, setReference] = useState('');
+  const [loading, setLoading] = useState();
 
 
   const api = import.meta.env.VITE_API;
+
   useEffect(() => {
+    setLoading(true); 
     fetch(api)
-      .then(response => response.json())
-      .then(productos => setData(productos))
-      .catch(error => console.error('Error fetching data:', error));
+      .then((response) => response.json())
+      .then((productos) => {
+        setData(productos);  
+        setLoading(false);   
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      });
   }, []);
 
   const handleBuyClick = (precio, id, title) => {
@@ -74,6 +83,8 @@ function App() {
     }
   }, [total]);
 
+  if (loading) return <>Loading Products...</>
+
   return (
     <>
       <div className="container">
@@ -82,8 +93,7 @@ function App() {
           <span className="total-amount">
             Total Acumulado: ${total}00
           </span>
-          <div id="wompi-checkout-button" className="wompi-button-container">
-            {/* Aquí se cargará el botón de Wompi */}
+            <div id="wompi-checkout-button" className="wompi-button-container">
           </div>
         </div>
         <div className="card-grid">
