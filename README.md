@@ -1,8 +1,15 @@
-# React + Vite
+# Frontend Productos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Está es una app de productos, donde se muestran los productos que se tienen disponibles en stock, el sitio web se encuentra
+en el siguiente link https://frontend-react-app.netlify.app/
+y desde allí elige el producto que desea comprar la tecnolgía utilizadas son React y Atomic Design para una estructura más compleja
+de los componentes de la aplicación y la pasarela de pago de Wompi.
 
-Currently, two official plugins are available:
+![imagen](https://github.com/user-attachments/assets/ebae65f0-9e46-44db-874a-f251d1301a89)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+# Acceso al Sitio Web
+
+<ul>
+  <li>Url: https://frontend-react-app.netlify.app/</li>
+</ul>
